@@ -1,0 +1,113 @@
+# 太空电梯月球殖民物资运输系统流程图
+# Mathematical Model Flowchart: Space Elevator Moon Colony Logistics System
+# 2026 MCM Problem B - Research-Level Diagram
+
+flowchart TB
+    subgraph INPUT["📊 输入参数 / Input Parameters"]
+        P1["殖民地规模: 100,000人<br/>Colony Capacity"]
+        P2["物资总量: 100百万吨<br/>Total Materials: 100M MT"]
+        P3["起始年份: 2050<br/>Start Year: 2050"]
+        P4["水资源年需求<br/>Annual Water Requirement"]
+    end
+
+    subgraph SCENARIO["🎯 场景定义 / Scenario Definition"]
+        S1["场景A: 纯太空电梯<br/>Space Elevator Only"]
+        S2["场景B: 纯火箭运输<br/>Traditional Rockets Only"]
+        S3["场景C: 混合模式<br/>Hybrid Approach"]
+    end
+
+    subgraph ELEVATOR["🚀 太空电梯系统模型<br/>Space Elevator System Model"]
+        E1["3个Galactic Harbours<br/>@ 赤道120°间隔"]
+        E2["每个港口运力<br/>179,000 MT/年"]
+        E3["双阶段运输<br/>Earth Port → Apex → Moon"]
+        E4[" tether摇摆模型<br/>Swaying Tolerance"]
+        E5["电梯故障率<br/>Elevator Failure Rate"]
+    end
+
+    subgraph ROCKET["🔥 传统火箭系统模型<br/>Traditional Rocket Model"]
+        R1["10个发射基地<br/>Global Launch Sites"]
+        R2["单次运力: 100-150 MT<br/>Payload Capacity"]
+        R3["单次成本模型<br/>Cost per Launch"]
+        R4["发射失败率<br/>Launch Failure Rate"]
+        R5["环境影响因子<br/>Environmental Impact"]
+    end
+
+    subgraph CALC["⚙️ 核心计算模块<br/>Core Calculation Module"]
+        C1["运输时间计算<br/>Transport Timeline<br/>T_total = Σ(T_elevator + T_rocket)"]
+        C2["成本模型<br/>Cost Model<br/>C_total = C_fixed + C_variable × MT"]
+        C3["可靠性分析<br/>Reliability Analysis<br/>R_system = Π R_i"]
+        C4["水资源补给<br/>Water Logistics<br/>V_water = P × 365 × r_consumption"]
+    end
+
+    subgraph OUTPUT["📈 输出指标 / Output Metrics"]
+        O1["总成本对比<br/>Total Cost Comparison"]
+        O2["建设周期<br/>Construction Timeline"]
+        O3["环境影响评估<br/>Environmental Impact Score"]
+        O4["系统可靠性<br/>System Reliability"]
+        O5["水资源保障<br/>Water Supply Security"]
+    end
+
+    subgraph OPTIMIZE["🔧 优化模块 / Optimization"]
+        OPT1["多目标优化<br/>Multi-Objective Optimization<br/>min(Cost, Time, Impact)"]
+        OPT2["敏感性分析<br/>Sensitivity Analysis"]
+        OPT3["风险缓解策略<br/>Risk Mitigation"]
+    end
+
+    subgraph DECISION["✅ 决策输出 / Decision Output"]
+        D1["推荐方案<br/>Recommended Strategy"]
+        D2["实施路线图<br/>Implementation Roadmap"]
+        D3["致MCM机构建议信<br/>Letter to MCM Agency"]
+    end
+
+    %% 流程连接
+    INPUT --> SCENARIO
+    
+    S1 --> ELEVATOR
+    S2 --> ROCKET
+    S3 --> ELEVATOR & ROCKET
+    
+    ELEVATOR --> CALC
+    ROCKET --> CALC
+    
+    CALC --> OUTPUT
+    OUTPUT --> OPTIMIZE
+    OPTIMIZE --> DECISION
+
+    %% 内部连接
+    E1 --> E2
+    E2 --> E3
+    E3 --> E4
+    E4 --> E5
+    
+    R1 --> R2
+    R2 --> R3
+    R3 --> R4
+    R4 --> R5
+    
+    C1 --> C2
+    C2 --> C3
+    C3 --> C4
+
+    %% 反馈循环
+    OPT2 -.->|参数调整| INPUT
+    E5 -.->|故障率反馈| C3
+    R4 -.->|失败率反馈| C3
+
+    %% 样式定义
+    classDef inputClass fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    classDef scenarioClass fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    classDef elevatorClass fill:#e8f5e9,stroke:#388e3c,stroke-width:2px,color:#000
+    classDef rocketClass fill:#ffebee,stroke:#d32f2f,stroke-width:2px,color:#000
+    classDef calcClass fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    classDef outputClass fill:#fff8e1,stroke:#fbc02d,stroke-width:2px,color:#000
+    classDef optimizeClass fill:#e0f2f1,stroke:#00796b,stroke-width:2px,color:#000
+    classDef decisionClass fill:#fce4ec,stroke:#c2185b,stroke-width:3px,color:#000
+
+    class INPUT,P1,P2,P3,P4 inputClass
+    class SCENARIO,S1,S2,S3 scenarioClass
+    class ELEVATOR,E1,E2,E3,E4,E5 elevatorClass
+    class ROCKET,R1,R2,R3,R4,R5 rocketClass
+    class CALC,C1,C2,C3,C4 calcClass
+    class OUTPUT,O1,O2,O3,O4,O5 outputClass
+    class OPTIMIZE,OPT1,OPT2,OPT3 optimizeClass
+    class DECISION,D1,D2,D3 decisionClass
