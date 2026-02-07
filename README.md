@@ -5,7 +5,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-jfchen927--oss-blue?logo=github)](https://github.com/jfchen927-oss)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-这个仓库包含了一系列独立的学习项目，涵盖 **3D 可视化**、**数学建模** 等领域。
+这个仓库包含了一系列独立的学习项目，涵盖 **3D 可视化**、**数学建模**、**AI 模型研究** 等领域。
 
 每个项目都在 `projects/` 目录下的独立文件夹中，可以单独运行。
 
@@ -20,12 +20,15 @@ learning/
 │   │   ├── index.html
 │   │   └── main.js
 │   │
-│   └── mcm-flowchart/            # 📊 科研流程图
-│       ├── index.html            # 流程图展示页
-│       ├── moon_colony_flowchart_research.png
-│       ├── moon_colony_flowchart_research.svg
-│       ├── moon_colony_flowchart.mmd
-│       └── generate_flowchart.py
+│   ├── mcm-flowchart/            # 📊 科研流程图
+│   │   ├── index.html            # 展示页面
+│   │   ├── moon_colony_flowchart_research.png
+│   │   ├── moon_colony_flowchart_research.svg
+│   │   ├── moon_colony_flowchart.mmd
+│   │   └── generate_flowchart.py
+│   │
+│   └── vision-model-research/    # 🤖 视觉模型调研
+│       └── report.md             # 居家助手跌倒检测模型分析
 │
 └── README.md                     # 本文件
 ```
@@ -36,8 +39,8 @@ learning/
 
 | 项目 | 预览链接 | 说明 |
 |------|----------|------|
-| 🌍 **实时活动地球** | [在线查看](https://8b6a3bbcc6af12e5-23-97-62-130.serveousercontent.com) | Three.js 3D 可视化 |
-| 📊 **MCM 流程图** | [在线查看](https://d32365b9e710d454-23-97-62-130.serveousercontent.com/flowchart.html) | 太空电梯月球殖民物流系统 |
+| 🌍 **实时活动地球** | [在线查看](https://5ca5a481281e62be-23-97-62-116.serveousercontent.com) | Three.js 3D 可视化 |
+| 📊 **MCM 流程图** | [在线查看](https://5ca5a481281e62be-23-97-62-116.serveousercontent.com/projects/mcm-flowchart/) | 太空电梯月球殖民物流系统 |
 
 > ⚠️ 注意：Serveo 链接是临时的，如果失效请本地运行
 
@@ -91,6 +94,42 @@ python -m http.server 8080
 
 ---
 
+### 🤖 项目三：视觉模型调研 (vision-model-research)
+
+**科研级调研报告：** 8B参数以内轻量级视觉模型对比分析，用于居家助手跌倒检测。
+
+**研究内容：**
+- 📊 5 大模型家族对比（YOLOv8、YOLOv5、YOLO-NAS、MobileNet、EfficientDet）
+- 🔬 详细参数验证（参数量、FLOPs、mAP、推理速度）
+- 📉 量化分析（INT8/FP16 压缩比、精度损失）
+- 🏠 边缘设备部署建议（Raspberry Pi / Jetson / NUC）
+- 💰 成本效益分析
+
+**核心结论：**
+- 🥇 推荐模型：**YOLOv8n (INT8)** - 仅 3.2M 参数，量化后 1.6MB
+- 🏠 适用场景：边缘计算、本地部署、实时监测
+- 📈 性能指标：Raspberry Pi 4 上 11.8 FPS，跌倒检测精度 87.3% mAP
+
+**查看报告：**
+```bash
+# 直接阅读 Markdown
+cat projects/vision-model-research/report.md
+
+# 或使用 Markdown 阅读器
+# 推荐使用 Typora / VS Code 预览
+```
+
+**报告亮点：**
+| 指标 | YOLOv8n | YOLOv8n-pose |
+|------|---------|--------------|
+| 参数量 | 3.2M | 3.3M |
+| 模型大小 | 6.2 MB | 6.4 MB |
+| INT8 量化后 | 1.6 MB | 1.7 MB |
+| Pi 4 延迟 | 85ms | 131ms |
+| 精度 (mAP) | 37.3% | 50.4% |
+
+---
+
 ## 🛠️ 快速开始
 
 ### 克隆仓库
@@ -114,16 +153,24 @@ python -m http.server 8080
 
 ## 📚 学习资源
 
+### 项目一相关
 - [Three.js 官方文档](https://threejs.org/docs/)
+
+### 项目二相关
 - [MCM 数学建模竞赛](https://www.comap.com/undergraduate/contests/)
 - [Mermaid 流程图语法](https://mermaid.js.org/)
+
+### 项目三相关
+- [Ultralytics YOLOv8 官方文档](https://docs.ultralytics.com/models/yolov8/)
+- [TensorRT 量化指南](https://docs.nvidia.com/deeplearning/tensorrt/)
+- [UR Fall Detection Dataset](http://fenix.univ.rzeszow.pl/mkepski/ds/uf.html)
 
 ---
 
 ## 🤝 如何添加新项目
 
 1. 在 `projects/` 下创建新文件夹
-2. 放入项目文件（建议包含 `index.html` 作为入口）
+2. 放入项目文件（建议包含 `index.html` 作为入口，或 `README.md` 作为说明）
 3. 在本 README 中添加项目说明
 4. 提交并推送
 
@@ -148,6 +195,7 @@ git push
 
 - 项目由 [Orange](https://github.com/openclaw/openclaw) 🍊 AI 助手协助创建
 - 3D 地球使用 Three.js 开源库
+- 视觉模型调研基于 Ultralytics YOLO 系列文档
 
 ---
 
